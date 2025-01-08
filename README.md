@@ -1,31 +1,28 @@
-# sorting packages based on its dimesions (volume) and weight
-def sort(inputs: list) -> str:
-    # Calculate the volume of the package
-    width = inputs[0]
-    height = inputs[1]
-    length = inputs[2]
-    weight = inputs[3]
-    volume = width * height * length
+### Objective
 
-    # Determine if the package is bulky
-    bulky = volume >= 1000000 or max(width, height, length) >= 150
+Imagine you work in Thoughtful’s robotic automation factory, and your objective is to write a function for one of its robotic arms that will dispatch the packages to the correct stack according to their volume and mass.
 
-    # Determine if the package is heavy
-    heavy = weight >= 20
+### Rules
 
-    # Determine the stack for the package
-    if bulky and heavy:
-        return "REJECTED"  # Both bulky and heavy
-    elif bulky or heavy:
-        return "SPECIAL"   # Either bulky or heavy
-    else:
-        return "STANDARD"  # Neither bulky nor heavy
+Sort the packages using the following criteria:
 
-if __name__ == "__main__":
-    try:
-        print(sort([40, 60, 60, 10]))   # Output will be STANDARD
-        print(sort([200, 60, 50, 10]))    # Output will be SPECIAL (bulky)
-        print(sort([40, 60, 70, 40]))     # Output will be SPECIAL (heavy)
-        print(sort([300, 150, 200, 40]))  # Output will be REJECTED (both heavy and bulky
-    except Exception as e:
-        print(f"Something failed, sorry.: {e}")
+- A package is **bulky** if its volume (Width x Height x Length) is greater than or equal to 1,000,000 cm³ or when one of its dimensions is greater or equal to 150 cm.
+- A package is **heavy** when its mass is greater or equal to 20 kg.
+
+You must dispatch the packages in the following stacks:
+
+- **STANDARD**: standard packages (those that are not bulky or heavy) can be handled normally.
+- **SPECIAL**: packages that are either heavy or bulky can't be handled automatically.
+- **REJECTED**: packages that are **both** heavy and bulky are rejected.
+
+### Implementation
+
+Implement the function **`sort(width, height, length, mass)`** (units are centimeters for the dimensions and kilogram for the mass). This function must return a string: the name of the stack where the package should go.
+
+### How to run the code
+Make sure you have a computer with Python 3.7 or above installed. Then run:
+$ python3 sorting_packages.py
+STANDARD
+SPECIAL
+SPECIAL
+REJECTED

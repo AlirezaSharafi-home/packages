@@ -21,6 +21,7 @@ Implement the function **`sort(width, height, length, mass)`** (units are centim
 
 ### How to run the code
 Make sure you have a computer with Python 3.7 or above installed. Then run:
+```bash
 $ python3 sorting_packages.py
 STANDARD
 SPECIAL
